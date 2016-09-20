@@ -7,17 +7,18 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var WechatAPI = require('wechat-api');
 
+
 var api = new WechatAPI('wxd3b6dc6c73e2e61d', '0257a41339180408957a5293b451f62f')
 api.getAccessToken(function (err, token) {
     console.log(err);
     console.log(token);
 });
 
-var img = "./src/img/head10.jpg";
+/*var img = "./src/img/head10.jpg";
 api.uploadMaterial(img,'image',function(err,result){
   console.log(err)
   console.log(result)
-})
+})*/
 
 /*var mp3 = "./src/music/RolyPoly.mp3"
 api.uploadMaterial(mp3,'voice',function(err,result){
@@ -38,6 +39,7 @@ var users = require('./routes/users');
 var weixin = require('./routes/weixin');
 
 var app = express();
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

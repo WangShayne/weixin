@@ -1,6 +1,12 @@
 var express = require('express');
 var router = express.Router();
 var wechat = require('wechat');
+var OAuth = require('wechat-oauth');
+var client = new OAuth('wxd3b6dc6c73e2e61d', '0257a41339180408957a5293b451f62f');
+
+var url = client.getAuthorizeURL("http://shayne.tunnel.qydev.com/users","STATE","snsapi_userinfo")
+
+
 
 var config = {
   token : 'weixin',
@@ -12,14 +18,14 @@ var config = {
 router.use(express.query());
 
 router.use('/', wechat(config, function(req, res, next) {
-    console.log(req.weixin);
+    //console.log(req.weixin);
     var message = req.weixin;
     //文本
     if(message.MsgType === "event" ){
       if(message.Event === "subscribe"){
         res.reply({
           type:"text",
-          content:"谢谢关注!<a href='http://shayne.tunnel.qydev.com/'>请访问我们的主页</a> "
+          content:"谢谢关注!\<a href="+url+"\>点击访问主页</a>"
         });
       }
       if(message.Event === "CLICK"){
@@ -27,7 +33,7 @@ router.use('/', wechat(config, function(req, res, next) {
             case "A_text":
               res.reply({
                 type:"text",
-                content:"返回文本消息"
+                content:"<a href="+url+">百度一下</a>"
               })
               break;
             /*case "A_image":
