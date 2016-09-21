@@ -14,6 +14,8 @@ api.getAccessToken(function (err, token) {
     console.log(token);
 });
 
+
+
 /*var img = "./src/img/head10.jpg";
 api.uploadMaterial(img,'image',function(err,result){
   console.log(err)
